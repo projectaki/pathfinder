@@ -1,10 +1,14 @@
 import Pathfinder from "./Pathfinder/Pathfinder.jsx"
-
+import Navbar from './components/Navbar'
 function App() {
   return (
-    <Pathfinder>
+    <>
+      <Navbar/>
+      <Pathfinder/>
+    </>
+    
 
-    </Pathfinder>
+    
   );
 }
 
