@@ -40,7 +40,7 @@ export const BFS = (iLength, jLength, starti, startj, endi, endj, walls) => {
     // newgrid[endi - 1][endj - 1] = new Node(null, startCoords.i, startCoords.j);
 
     let currentCoords = new Pair();
-    while (!(currentCoords.i === endCoords.i && currentCoords.j === endCoords.j)) {
+    while (!(currentCoords.i === endCoords.i && currentCoords.j === endCoords.j) && nodesToProcess.length !== 0) {
     
         
         currentCoords = nodesToProcess.shift();
@@ -53,13 +53,16 @@ export const BFS = (iLength, jLength, starti, startj, endi, endj, walls) => {
         
 
     }
-    
     let path = [];
-    let endNode = newgrid[currentCoords.i][currentCoords.j];
-    while (endNode != null) {
-        path.push(endNode);
-        endNode = endNode.prev;
+    if (currentCoords.i === endCoords.i && currentCoords.j === endCoords.j) {
+        
+        let endNode = newgrid[currentCoords.i][currentCoords.j];
+        while (endNode != null) {
+            path.push(endNode);
+            endNode = endNode.prev;
+        }
     }
+    
     // console.log(path);
     return [path, searched];
  }

@@ -27,6 +27,7 @@ export default class Pathfinder extends React.Component {
 
     componentDidMount() {
         this.refresh();
+        
     }
 
     refresh() {
@@ -35,7 +36,9 @@ export default class Pathfinder extends React.Component {
 
         const elem = document.getElementsByClassName("node");
         for (let i = 0; i < elem.length; i++) {
+            elem[i].classList.remove("slow-color");
             elem[i].style.backgroundColor = "white";
+            elem[i].style.border = "0.1vw solid lightblue";
         }
     }
     
@@ -58,9 +61,64 @@ export default class Pathfinder extends React.Component {
         let j = 20;
         for (let i = 0; i < 25; i++) {
             elem[coordMap(i, j)].style.backgroundColor = "black";
+            elem[coordMap(i, j)].style.border = "0.1vw solid black";
             wallCordsI.push(i);
             wallCordsJ.push(j);
         }
+
+        for (let i = 5; i < 30; i++) {
+            elem[coordMap(i, j + 5)].style.backgroundColor = "black";
+            elem[coordMap(i, j + 5)].style.border = "0.1vw solid black";
+            wallCordsI.push(i);
+            wallCordsJ.push(j + 5);
+        }
+        elem[coordMap(18, 38)].style.backgroundColor = "black";
+        elem[coordMap(18, 38)].style.border = "0.1vw solid black";
+        wallCordsI.push(18);
+        wallCordsJ.push(38);
+
+        elem[coordMap(17, 38)].style.backgroundColor = "black";
+        elem[coordMap(17, 38)].style.border = "0.1vw solid black";
+        wallCordsI.push(17);
+        wallCordsJ.push(38);
+
+        elem[coordMap(16, 38)].style.backgroundColor = "black";
+        elem[coordMap(16, 38)].style.border = "0.1vw solid black";
+        wallCordsI.push(16);
+        wallCordsJ.push(38);
+
+        elem[coordMap(15, 38)].style.backgroundColor = "black";
+        elem[coordMap(15, 38)].style.border = "0.1vw solid black";
+        wallCordsI.push(15);
+        wallCordsJ.push(38);
+
+        elem[coordMap(14, 38)].style.backgroundColor = "black";
+        elem[coordMap(14, 38)].style.border = "0.1vw solid black";
+        wallCordsI.push(14);
+        wallCordsJ.push(38);
+
+        elem[coordMap(14, 39)].style.backgroundColor = "black";
+        elem[coordMap(14, 39)].style.border = "0.1vw solid black";
+        wallCordsI.push(14);
+        wallCordsJ.push(39);
+
+        elem[coordMap(14, 40)].style.backgroundColor = "black";
+        elem[coordMap(14, 40)].style.border = "0.1vw solid black";
+        wallCordsI.push(14);
+        wallCordsJ.push(40);
+
+        elem[coordMap(15, 40)].style.backgroundColor = "black";
+        elem[coordMap(15, 40)].style.border = "0.1vw solid black";
+        wallCordsI.push(15);
+        wallCordsJ.push(40);
+
+        elem[coordMap(16, 40)].style.backgroundColor = "black";
+        elem[coordMap(16, 40)].style.border = "0.1vw solid black";
+        wallCordsI.push(16);
+        wallCordsJ.push(40);
+        
+
+
         walls.push(wallCordsI);
         walls.push(wallCordsJ);
         //this.state.walls = walls;
@@ -82,15 +140,18 @@ export default class Pathfinder extends React.Component {
                     return;
                 }
                 let index = coordMap(searched[i].i, searched[i].j, GRID_LENGTH);
-                elems[index].style.backgroundColor = "blue";
-                await delay(10);
+                elems[index].classList.add("slow-color");
+                await delay(5);
             }
+            
+            
             await delay(1);
             for (let i = 1; i < path.length - 1; i++) {
                 if(this.state.terminate === true) {
                     return;
                 }
                 let index = coordMap(path[i].i, path[i].j, GRID_LENGTH);
+                elems[index].classList.remove("slow-color");
                 elems[index].style.backgroundColor = "yellow";
             }
         }

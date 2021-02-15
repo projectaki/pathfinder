@@ -9,9 +9,9 @@ class Navbar extends Component {
                 <nav>
                     <div class="nav-wrapper">
                         <div style={{display: "grid", gridTemplateColumns: "20vw 80vw"}}>
-                            <div style={{fontSize: "1vw"}}>
+                            <div >
                                 <a href="https://projectaki.github.io/portfolio_akos_madarasz/#/Projects">
-                                    <i class="fas fa-arrow-left fa-3x" style={{paddingLeft: "1vw", width: "100%", height: "100%"}}></i>
+                                    <i class="fas fa-arrow-left" style={{paddingLeft: "1vw"}}></i>
                                 </a>
                             </div>
                             <div>

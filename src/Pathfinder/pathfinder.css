@@ -1,5 +1,6 @@
 .node {
-  border: 0.1vw solid lightblue;  
+  border: 0.1vw solid lightblue;
+  
   }
 
 .grid-container {
@@ -35,4 +36,15 @@
 
 body {
   background-color: black;
+}
+
+@keyframes color{
+  from {background-color: white;}
+  to {background-color: darkorchid;}
+}
+
+.slow-color {
+  animation-name: color;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 }
