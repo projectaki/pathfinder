@@ -45,6 +45,6 @@ body {
 
 .slow-color {
   animation-name: color;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }

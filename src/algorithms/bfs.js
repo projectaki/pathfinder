@@ -23,8 +23,8 @@ export const BFS = (iLength, jLength, starti, startj, endi, endj, walls) => {
 
     let newgrid = createGrid(iLength,jLength);
     // Setup walls
-    for (let i = 0; i < walls[0].length; i++) {
-        newgrid[walls[0][i]][walls[1][i]] = new Node(null,walls[0][i], walls[1][i]);
+    for (let i = 1; i < walls.length; i++) {
+        newgrid[walls[i][0]][walls[i][1]] = new Node(null,walls[i][0], walls[i][1]);
     }
     
     let startCoords = new Pair(starti,startj);
