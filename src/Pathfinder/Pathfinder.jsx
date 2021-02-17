@@ -21,18 +21,34 @@ export default class Pathfinder extends React.Component {
             endselection: false,
             startnode: [],
             endnode: [],
+            trigger: false,
         
         };
     }
 
+    testdown
+
+    
+
     componentDidMount() {
         this.refresh();
-        this.setState({startnode: [0,0], endnode: [29,44]});
+        //this.setState({startnode: [0,0], endnode: [29,44]});
+        
+            window.addEventListener("mousedown", (event) => {
+                event.preventDefault();
+                this.setState({trigger: true}); 
+            });
+          
+            window.addEventListener('mouseup', (event) => {
+                this.setState({trigger: false});
+            });
+          
+        
     }
 
     refresh() {
         
-        this.setState({terminate: true, running: false, walls: [[]], setup: false});
+        this.setState({terminate: true, running: false, walls: [[]], setup: false, startnode: [], endnode: []});
 
         const elem = document.getElementsByClassName("node");
         for (let i = 0; i < elem.length; i++) {
@@ -81,6 +97,12 @@ export default class Pathfinder extends React.Component {
         
     }
 
+    dragSwitchColor(id) {
+        if(this.state.trigger === true) {
+            this.clickSwitchColor(id);
+        }
+    }
+
     async clickSwitchColor(id) {
         if (this.state.running === false) {
             let elem = document.getElementById(id);
@@ -103,20 +125,20 @@ export default class Pathfinder extends React.Component {
                 }
                 this.setState({walls: tempSet});
                 await delay(1);
-                console.log(this.state.walls);
+                
             }
 
             //If we are selecting the start node
             if(this.state.beginselection === true) {
                 const start = this.state.startnode;
-                console.log(start);
+                
                 if (start.length !== 0) {
                     let currentStart = document.getElementById(coordMap(start[0],start[1]));
                     currentStart.style.backgroundColor = "white";
-                    elem.style.backgroundColor = "green";
+                }
+                elem.style.backgroundColor = "green";
                     let newStart = idToCoords(id);
                     this.setState({startnode: newStart});
-                }
             }
 
             //If we are selecting the end node
@@ -126,10 +148,10 @@ export default class Pathfinder extends React.Component {
                 if (end.length !== 0) {
                     let currentEnd = document.getElementById(coordMap(end[0],end[1]));
                     currentEnd.style.backgroundColor = "white";
-                    elem.style.backgroundColor = "red";
+                }
+                elem.style.backgroundColor = "red";
                     let newEnd = idToCoords(id);
                     this.setState({endnode: newEnd});
-                }
             }
         }
         
@@ -186,7 +208,7 @@ export default class Pathfinder extends React.Component {
         const grid = [];
         let numberOfNodes = GRID_LENGTH*GRID_WIDTH;
         for (let i = 0; i < numberOfNodes; i++) {
-            grid.push(<div onClick={() => this.clickSwitchColor(i)} className="node" key={i} id={i}></div>);
+            grid.push(<div onMouseEnter={() => this.dragSwitchColor(i)} onClick={() => this.clickSwitchColor(i)} className="node" key={i} id={i}></div>);
         }
         return (
             <>
@@ -195,11 +217,13 @@ export default class Pathfinder extends React.Component {
                     <div className="container">
 
                         <div className="button-grid">
-                            <button id="startbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.startSelectionTrigger("startbtn")}>start</button>
-                            <button id="endbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.endSelectionTrigger("endbtn")}>end</button>
+                            
+                            <button id="startbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.startSelectionTrigger("startbtn")}>startnode</button>
+                            <button id="endbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.endSelectionTrigger("endbtn")}>endnode</button>
                             <button id="wallbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>Walls</button>
                             <button id="bfsbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.bfs()}>bfs</button>
                             <button id="refreshbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.refresh()}>Refresh</button>
+                            <p className="res-p">Select startnode, endnode, and walls to place them on the grid. Once they are placed run bfs to find the shortest path.</p>
                         </div>
                     </div>
                     
@@ -246,3 +270,4 @@ function delay(n) {
       }, n);
     });
   }
+

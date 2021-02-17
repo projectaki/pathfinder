@@ -28,7 +28,7 @@
 .button-grid {
   display: grid;
   margin-top: 6%;
-  grid-gap: 4vh;
+  grid-gap: 1vh;
   grid-template-columns: repeat(1, 1fr);
   margin-left: 2vw;
   margin-right: 2vw;
@@ -47,4 +47,10 @@ body {
   animation-name: color;
   animation-duration: 2s;
   animation-fill-mode: forwards;
+}
+
+.res-p {
+  font-size: 1vw;
+  color: white;
+  margin: 0;
 }
