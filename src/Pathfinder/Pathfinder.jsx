@@ -32,7 +32,7 @@ export default class Pathfinder extends React.Component {
 
     componentDidMount() {
         this.refresh();
-        //this.setState({startnode: [0,0], endnode: [29,44]});
+        
         
             window.addEventListener("mousedown", (event) => {
                 event.preventDefault();
@@ -42,8 +42,20 @@ export default class Pathfinder extends React.Component {
             window.addEventListener('mouseup', (event) => {
                 this.setState({trigger: false});
             });
+            const M = window.M;
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems, []);
+
+            this.openModal();
           
         
+    }
+
+    openModal() {
+        const M = window.M;
+        let elem = document.getElementById("modal1");
+        var instance = M.Modal.getInstance(elem);
+        instance.open();
     }
 
     refresh() {
@@ -223,7 +235,7 @@ export default class Pathfinder extends React.Component {
                             <button id="wallbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>Walls</button>
                             <button id="bfsbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.bfs()}>bfs</button>
                             <button id="refreshbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.refresh()}>Refresh</button>
-                            <p className="res-p">Select startnode, endnode, and walls to place them on the grid. Once they are placed run bfs to find the shortest path.</p>
+                            <button id="" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.openModal()}>Instructions</button>
                         </div>
                     </div>
                     
@@ -237,7 +249,17 @@ export default class Pathfinder extends React.Component {
                         </div>
                     
                 </div>
-            
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                    <h4>How to use</h4>
+                    <p>While one of the 3 types of objects are selected (STARTNODE, ENDNODE or WALLS) you can place them on the grid by clicking or dragging! Once the field is set up
+                        click BFS to find the shortest path.
+                    </p>
+                    </div>
+                    <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+                    </div>
+                </div>
             </div>
 
             
