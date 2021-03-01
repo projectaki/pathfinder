@@ -26,10 +26,6 @@ export default class Pathfinder extends React.Component {
         };
     }
 
-    testdown
-
-    
-
     componentDidMount() {
         this.refresh();
         
@@ -224,31 +220,36 @@ export default class Pathfinder extends React.Component {
         }
         return (
             <>
-            <div class="row">
-                <div class="col s3">
-                    <div className="container">
+            <div className="back-btn" style={{position: "absolute", padding: 0, margin: 0}}>
+                <a href="https://projectaki.github.io/portfolio_akos_madarasz/#/Projects" style={{color: "black"}} >
+                    <i class="fas fa-arrow-left fa-2x"></i>
+                </a>
+            </div>
+            
+                    <div className="grid-container rotate-on-small">
+                                {grid}
+                    </div>
+                    
 
                         <div className="button-grid">
                             
-                            <button id="startbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.startSelectionTrigger("startbtn")}>startnode</button>
-                            <button id="endbtn"class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.endSelectionTrigger("endbtn")}>endnode</button>
-                            <button id="wallbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>Walls</button>
-                            <button id="bfsbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.bfs()}>bfs</button>
-                            <button id="refreshbtn" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.refresh()}>Refresh</button>
-                            <button id="" class="waves-effect waves-light btn" style={{backgroundColor: "blueviolet"}} onClick={() => this.openModal()}>Instructions</button>
+                            <button id="startbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.startSelectionTrigger("startbtn")}>STARTNODE</button>
+                            <button id="endbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.endSelectionTrigger("endbtn")}>ENDNODE</button>
+                            <button id="wallbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>ADD WALLS</button>
+                            <button id="bfsbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.bfs()}>SEARCH</button>
+                            <button id="refreshbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.refresh()}>REFRESH</button>
+                            <button id="" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.openModal()}>INFO</button>
                         </div>
-                    </div>
                     
                     
-                </div>
+                    
+               
                 
-                <div class="col s9">
+                
                     
-                        <div className="grid-container">
-                                {grid}
-                        </div>
+                        
                     
-                </div>
+                
                 <div id="modal1" class="modal">
                     <div class="modal-content">
                     <h4>How to use</h4>
@@ -260,7 +261,7 @@ export default class Pathfinder extends React.Component {
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
                     </div>
                 </div>
-            </div>
+            
 
             
                 

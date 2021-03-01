@@ -5,27 +5,11 @@ class Navbar extends Component {
     
     render() {
         return (
-            <div>
-                <nav>
-                    <div class="nav-wrapper">
-                        <div style={{display: "grid", gridTemplateColumns: "20vw 80vw"}}>
-                            <div >
-                                <a href="https://projectaki.github.io/portfolio_akos_madarasz/#/Projects">
-                                    <i class="fas fa-arrow-left" style={{paddingLeft: "1vw"}}></i>
-                                </a>
-                            </div>
-                            <div>
-                                <span style={{fontSize: "3vh", marginLeft: "25vw"}}>Pathfinder Visualiser</span>
-                            </div>
-                        </div>
-                        
-                    
-                    </div>
-                </nav>
+            
+                <div className="navbar">
+                        <h1 style={{margin: 0, fontSize: "3vmin", paddingTop: "2vmin", paddingBottom: "2vmin", fontFamily: "League Spartan"}}>Pathfinder</h1>
+                </div>
 
-                
-    
-            </div>
         );
     }
 }
