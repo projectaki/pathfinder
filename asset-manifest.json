@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/pathfinder/static/css/main.18c1b610.chunk.css",
-    "main.js": "/pathfinder/static/js/main.6e85f2b0.chunk.js",
-    "main.js.map": "/pathfinder/static/js/main.6e85f2b0.chunk.js.map",
+    "main.css": "/pathfinder/static/css/main.3f0fe672.chunk.css",
+    "main.js": "/pathfinder/static/js/main.be93bf24.chunk.js",
+    "main.js.map": "/pathfinder/static/js/main.be93bf24.chunk.js.map",
     "runtime-main.js": "/pathfinder/static/js/runtime-main.a9d19726.js",
     "runtime-main.js.map": "/pathfinder/static/js/runtime-main.a9d19726.js.map",
     "static/js/2.c28f708e.chunk.js": "/pathfinder/static/js/2.c28f708e.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.89efab61.chunk.js": "/pathfinder/static/js/3.89efab61.chunk.js",
     "static/js/3.89efab61.chunk.js.map": "/pathfinder/static/js/3.89efab61.chunk.js.map",
     "index.html": "/pathfinder/index.html",
-    "static/css/main.18c1b610.chunk.css.map": "/pathfinder/static/css/main.18c1b610.chunk.css.map",
+    "static/css/main.3f0fe672.chunk.css.map": "/pathfinder/static/css/main.3f0fe672.chunk.css.map",
     "static/js/2.c28f708e.chunk.js.LICENSE.txt": "/pathfinder/static/js/2.c28f708e.chunk.js.LICENSE.txt",
     "static/media/pathfinder.css": "/pathfinder/static/media/LeagueSpartan-Bold.caadcad8.otf"
   },
   "entrypoints": [
     "static/js/runtime-main.a9d19726.js",
     "static/js/2.c28f708e.chunk.js",
-    "static/css/main.18c1b610.chunk.css",
-    "static/js/main.6e85f2b0.chunk.js"
+    "static/css/main.3f0fe672.chunk.css",
+    "static/js/main.be93bf24.chunk.js"
   ]
 }
