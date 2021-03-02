@@ -254,7 +254,7 @@ export default class Pathfinder extends React.Component {
                     <div class="modal-content">
                     <h4>How to use</h4>
                     <p>While one of the 3 types of objects are selected (STARTNODE, ENDNODE or WALLS) you can place them on the grid by clicking or dragging! Once the field is set up
-                        click BFS to find the shortest path.
+                        click "SEARCH" to find the shortest path.
                     </p>
                     </div>
                     <div class="modal-footer">
