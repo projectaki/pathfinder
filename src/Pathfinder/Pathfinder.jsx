@@ -168,8 +168,8 @@ export default class Pathfinder extends React.Component {
     }
 
     wallSelectionTrigger(btnid){
-        document.getElementById("startbtn").style.backgroundColor = "blueviolet";
-        document.getElementById("endbtn").style.backgroundColor = "blueviolet";
+        document.getElementById("startbtn").style.backgroundColor = "rgb(55,181,255)";
+        document.getElementById("endbtn").style.backgroundColor = "rgb(55,181,255)";
         this.setState({beginselection: false, endselection: false});
         let elem = document.getElementById(btnid);
         if(this.state.wallselection === false) {
@@ -178,13 +178,13 @@ export default class Pathfinder extends React.Component {
         }
         else {
             this.setState({wallselection: false});
-            elem.style.backgroundColor = "blueviolet";
+            elem.style.backgroundColor = "rgb(55,181,255)";
         }
     }
 
     startSelectionTrigger(btnid){
-        document.getElementById("wallbtn").style.backgroundColor = "blueviolet";
-        document.getElementById("endbtn").style.backgroundColor = "blueviolet";
+        document.getElementById("wallbtn").style.backgroundColor = "rgb(55,181,255)";
+        document.getElementById("endbtn").style.backgroundColor = "rgb(55,181,255)";
         this.setState({wallselection: false, endselection: false});
         let elem = document.getElementById(btnid);
         if(this.state.beginselection === false) {
@@ -193,13 +193,13 @@ export default class Pathfinder extends React.Component {
         }
         else {
             this.setState({beginselection: false});
-            elem.style.backgroundColor = "blueviolet";
+            elem.style.backgroundColor = "rgb(55,181,255)";
         }
     }
 
     endSelectionTrigger(btnid){
-        document.getElementById("startbtn").style.backgroundColor = "blueviolet";
-        document.getElementById("wallbtn").style.backgroundColor = "blueviolet";
+        document.getElementById("startbtn").style.backgroundColor = "rgb(55,181,255)";
+        document.getElementById("wallbtn").style.backgroundColor = "rgb(55,181,255)";
         this.setState({beginselection: false, wallselection: false});
         let elem = document.getElementById(btnid);
         if(this.state.endselection === false) {
@@ -208,7 +208,7 @@ export default class Pathfinder extends React.Component {
         }
         else {
             this.setState({endselection: false});
-            elem.style.backgroundColor = "blueviolet";
+            elem.style.backgroundColor = "rgb(55,181,255)";
         }
     }
 
@@ -225,20 +225,24 @@ export default class Pathfinder extends React.Component {
                     <i class="fas fa-arrow-left fa-2x"></i>
                 </a>
             </div>
-            
+                    <div style={{textAlign: "center"}}>
+                        <button id="bfsbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.bfs()}>SEARCH</button>
+                        <button id="refreshbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.refresh()}>REFRESH</button>
+                    </div>
+                    
                     <div className="grid-container rotate-on-small">
                                 {grid}
                     </div>
                     
 
-                        <div className="button-grid">
+                        <div style={{textAlign: "center"}}>
                             
-                            <button id="startbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.startSelectionTrigger("startbtn")}>STARTNODE</button>
-                            <button id="endbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.endSelectionTrigger("endbtn")}>ENDNODE</button>
-                            <button id="wallbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>ADD WALLS</button>
-                            <button id="bfsbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.bfs()}>SEARCH</button>
-                            <button id="refreshbtn" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.refresh()}>REFRESH</button>
-                            <button id="" className="actionbutton" style={{backgroundColor: "blueviolet"}} onClick={() => this.openModal()}>INFO</button>
+                            <button id="startbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.startSelectionTrigger("startbtn")}>STARTNODE</button>
+                            <button id="endbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.endSelectionTrigger("endbtn")}>ENDNODE</button>
+                            <button id="wallbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>ADD WALLS</button>
+                            
+                            
+                            <button id="" className="actionbutton" style={{backgroundColor: "#CB2375"}} onClick={() => this.openModal()}>INFO</button>
                         </div>
                     
                     
@@ -252,13 +256,10 @@ export default class Pathfinder extends React.Component {
                 
                 <div id="modal1" class="modal">
                     <div class="modal-content">
-                    <h4>How to use</h4>
-                    <p>While one of the 3 types of objects are selected (STARTNODE, ENDNODE or WALLS) you can place them on the grid by clicking or dragging! Once the field is set up
+                    <h4 style={{fontFamily: "League Spartan", fontSize: "2vmin"}}>How to use</h4>
+                    <p style={{fontFamily: "Alegreya sans", fontSize: "2vmin"}}>While one of the 3 types of objects are selected (STARTNODE, ENDNODE or WALLS) you can place them on the grid by clicking or dragging! Once the field is set up
                         click "SEARCH" to find the shortest path.
                     </p>
-                    </div>
-                    <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
                     </div>
                 </div>
             

@@ -16,24 +16,19 @@
     display: grid;
     grid-template-columns: repeat(45, 1fr);
     width: calc(45*2.2vmin);
-    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
 
 }
 
-.button-grid {
-  margin: auto;
-  width: 96vmin;
-}
-
 .actionbutton {
   font-size: 1.5vmin;
   width: 12vmin;
-  padding-top: 2vmin;
-  padding-bottom: 2vmin;
-  padding-left: auto;
-  padding-right: auto;
+  height: 6vmin;
+  padding-top: 1vmin;
+  padding-bottom: 1vmin;
+  padding-left: 2vmin;
+  padding-right: 2vmin;
   margin: 2vmin 2vmin;
   border-radius: 1vmin;
   font-family: Alegreya sans;
