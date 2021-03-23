@@ -1,5 +1,6 @@
 import React from "react";
-import { BFS } from "../algorithms/bfs.js";
+import { Astar }  from "../algorithms/AStar/Astar.js";
+import { BFS } from "../algorithms/BFS/bfs.js";
 
 import "./pathfinder.css";
 
@@ -27,6 +28,7 @@ export default class Pathfinder extends React.Component {
     }
 
     componentDidMount() {
+        
         this.refresh();
         
         
@@ -64,6 +66,41 @@ export default class Pathfinder extends React.Component {
             elem[i].style.backgroundColor = "white";
             elem[i].style.border = "0.1vw solid lightblue";
         }
+    }
+
+    async AStar() {
+        if(this.state.startnode.length !== 0 && this.state.endnode.length !== 0) {
+            this.setState({setup: true});
+        }
+        await delay(1);
+        if(this.state.running === false && this.state.setup === true) {
+            this.setState({running:true});
+            this.setState({terminate:false});
+            await delay(1);
+            const [searched, path] = Astar(GRID_WIDTH, GRID_LENGTH, this.state.startnode, this.state.endnode, Array.from(this.state.walls.values()), [5,5]);
+            const elems = document.getElementsByClassName("node");
+            for (let i = 1; i < searched.length - 1; i++) {
+                if(this.state.terminate === true) {
+                    return;
+                }
+                let index = coordMap(searched[i][0], searched[i][1], GRID_LENGTH);
+                elems[index].classList.add("slow-color");
+                await delay(50);
+            }
+            
+            
+            await delay(1);
+            for (let i = 0; i < path.length; i++) {
+                if(this.state.terminate === true) {
+                    return;
+                }
+                let index = coordMap(path[i][0], path[i][1], GRID_LENGTH);
+                elems[index].classList.remove("slow-color");
+                elems[index].style.backgroundColor = "yellow";
+                await delay(10);
+            }
+        }
+       
     }
 
     async bfs() {
@@ -236,7 +273,7 @@ export default class Pathfinder extends React.Component {
                     
 
                         <div style={{textAlign: "center"}}>
-                            
+                            <button onClick={() => this.AStar()}>TEST</button>
                             <button id="startbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.startSelectionTrigger("startbtn")}>STARTNODE</button>
                             <button id="endbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.endSelectionTrigger("endbtn")}>ENDNODE</button>
                             <button id="wallbtn" className="actionbutton" style={{backgroundColor: "rgb(55,181,255)"}} onClick={() => this.wallSelectionTrigger("wallbtn")}>ADD WALLS</button>
